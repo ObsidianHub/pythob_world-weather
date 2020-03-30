@@ -15,4 +15,7 @@ root.resizable(0, 0)
 top_frame = ttk.Frame(root)
 top_frame.place(relx=0.5, rely=0.1, relwidth=0.9, relheight=0.1, anchor='n')
 
+entry = ttk.Entry(top_frame)
+entry.place(relwidth=0.7, relheight=1)
+
 root.mainloop()
