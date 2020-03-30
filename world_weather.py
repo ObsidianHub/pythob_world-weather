@@ -9,7 +9,16 @@ API_URL = 'https://api.openweathermap.org/data/2.5/weather'
 # need to add here keys for getting weather details
 
 def get_weather():
-  pass
+  if not entry.get():
+    messagebox.showwarning('Warning', 'Введите запрос в формате city, country_code')
+  else:
+    params = {
+      "appid": API_KEY,
+      "q": entry.get(),
+      "units": "metric",
+      "lang": "ru"
+    }
+    
 
 root = ThemedTk(theme='arc')
 root.geometry('500x400+1000+300')
