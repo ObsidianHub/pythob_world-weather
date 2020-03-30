@@ -12,5 +12,7 @@ root = ThemedTk(theme='arc')
 root.geometry('500x400+1000+300')
 root.resizable(0, 0)
 
+top_frame = ttk.Frame(root)
+top_frame.place(relx=0.5, rely=0.1, relwidth=0.9, relheight=0.1, anchor='n')
 
 root.mainloop()
