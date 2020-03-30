@@ -9,7 +9,15 @@ API_URL = 'https://api.openweathermap.org/data/2.5/weather'
 # need to add here keys for getting weather details
 
 def print_weather(weather):
-  pass
+  city = weather['name']
+  country = weather['sys']['country']
+  temp = weather['main']['temp']
+  press = weather['main']['pressure']
+  humidity = weather['main']['humidity']
+  wind = weather['main']['speed']
+  desc = weather['weather'][0]['description']
+  sunrise_ts = weather['sys']['sunrise']
+  sunset_ts = weather['sys']['sunset']
 
 def get_weather():
   if not entry.get():
