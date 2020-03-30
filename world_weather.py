@@ -15,7 +15,7 @@ def print_weather(weather):
     temp = weather['main']['temp']
     press = weather['main']['pressure']
     humidity = weather['main']['humidity']
-    wind = weather['main']['speed']
+    wind = weather['wind']['speed']
     desc = weather['weather'][0]['description']
     sunrise_ts = weather['sys']['sunrise']
     sunset_ts = weather['sys']['sunset']
