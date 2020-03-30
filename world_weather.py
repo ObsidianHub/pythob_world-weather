@@ -27,7 +27,7 @@ def print_weather(weather):
   except:
     return "Ошибка получения данных..."
 
-def get_weather():
+def get_weather(event=''):
   if not entry.get():
     messagebox.showwarning('Warning', 'Введите запрос в формате city, country_code')
   else:
@@ -45,6 +45,9 @@ root = ThemedTk(theme='arc')
 root.geometry('500x400+1000+300')
 root.resizable(0, 0)
 
+s = ttk.Style()
+s.configure("TLabel", padding=5, font="Arial 11")
+
 top_frame = ttk.Frame(root)
 top_frame.place(relx=0.5, rely=0.1, relwidth=0.9, relheight=0.1, anchor='n')
 
@@ -59,5 +62,7 @@ lower_frame.place(relx=0.5, rely=0.25, relwidth=0.9, relheight=0.6, anchor='n')
 
 label = ttk.Label(lower_frame, anchor='nw')
 label.place(relwidth=1, relheight=1)
+
+entry.bind("<Return>", get_weather)
 
 root.mainloop()
