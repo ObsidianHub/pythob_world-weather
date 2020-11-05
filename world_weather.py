@@ -8,38 +8,42 @@ API_KEY = '8ad22b8e1adc7692cada142aa6f292de'
 API_URL = 'https://api.openweathermap.org/data/2.5/weather'
 # need to add here keys for getting weather details
 
+
 def print_weather(weather):
-  try:
-    city = weather['name']
-    country = weather['sys']['country']
-    temp = weather['main']['temp']
-    press = weather['main']['pressure']
-    humidity = weather['main']['humidity']
-    wind = weather['wind']['speed']
-    desc = weather['weather'][0]['description']
-    sunrise_ts = weather['sys']['sunrise']
-    sunset_ts = weather['sys']['sunset']
-    sunrise_struct_time = time.localtime(sunrise_ts)
-    sunset_struct_time = time.localtime(sunset_ts)
-    sunrise = time.strftime("%H:%M:%S", sunrise_struct_time)
-    sunset = time.strftime("%H:%M:%S", sunset_struct_time)
-    return f"Местоположение: {city}, {country} \nТемпература: {temp} °C \nАтм. давление: {press} гПа \nВлажность: {humidity}% \nСкорость ветра: {wind} м/с \nПогодные условия: {desc} \nВосход: {sunrise} \nЗакат: {sunset}"
-  except:
-    return "Ошибка получения данных..."
+    try:
+        city = weather['name']
+        country = weather['sys']['country']
+        temp = weather['main']['temp']
+        press = weather['main']['pressure']
+        humidity = weather['main']['humidity']
+        wind = weather['wind']['speed']
+        desc = weather['weather'][0]['description']
+        sunrise_ts = weather['sys']['sunrise']
+        sunset_ts = weather['sys']['sunset']
+        sunrise_struct_time = time.localtime(sunrise_ts)
+        sunset_struct_time = time.localtime(sunset_ts)
+        sunrise = time.strftime("%H:%M:%S", sunrise_struct_time)
+        sunset = time.strftime("%H:%M:%S", sunset_struct_time)
+        return f"Местоположение: {city}, {country} \nТемпература: {temp} °C \nАтм. давление: {press} гПа \nВлажность: {humidity}% \nСкорость ветра: {wind} м/с \nПогодные условия: {desc} \nВосход: {sunrise} \nЗакат: {sunset}"
+    except:
+        return "Ошибка получения данных..."
+
 
 def get_weather(event=''):
-  if not entry.get():
-    messagebox.showwarning('Warning', 'Введите запрос в формате city, country_code')
-  else:
-    params = {
-      "appid": API_KEY,
-      "q": entry.get(),
-      "units": "metric",
-      "lang": "ru"
-    }
-    r = requests.get(API_URL, params=params)
-    weather = r.json()
-    label['text'] = print_weather(weather)
+    if not entry.get():
+        messagebox.showwarning(
+            'Warning', 'Введите запрос в формате city, country_code')
+    else:
+        params = {
+            "appid": API_KEY,
+            "q": entry.get(),
+            "units": "metric",
+            "lang": "ru"
+        }
+        r = requests.get(API_URL, params=params)
+        weather = r.json()
+        label['text'] = print_weather(weather)
+
 
 root = ThemedTk(theme='arc')
 root.geometry('500x400+1000+300')
